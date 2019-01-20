@@ -1,0 +1,45 @@
+body{
+    background-image: url("../images/pink-background-gif-4.gif");
+    background-repeat: no-repeat;
+    background-color: #ffffff;
+    background-size: 100%;
+}
+.jumbotron{
+   color: #ff3385;
+   background-color: black;
+   margin: 20px 215px;
+   padding: 25px;
+  background-size: 300px 100px;
+}
+.center{
+    text-align: center;
+}
+#time{
+    font-size: 35pt;
+}
+#title{
+    font-size: 25pt;
+    font-style: oblique;
+    text-shadow: 3px 3px #ffffe6;
+
+}
+#timer{
+    font-size: 20pt;
+}
+#choice{
+    font-size: 15pt;
+}
+.btn-start{
+    position: relative;
+    margin-left: 500px;
+}
+.btn-group-vertical{
+    position: relative;
+    margin-left: 730px;
+}
+#question-here{
+    font-size: 35pt;
+    color:rgb(11, 19, 129);
+    outline-color: hotpink 15px;
+    color:blue;
+}
