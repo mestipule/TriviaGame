@@ -42,4 +42,14 @@ body{
     color:rgb(11, 19, 129);
     outline-color: hotpink 15px;
     color:blue;
+    text-align: center;
+}
+#button-choices{
+    display: none;
+    border: #ff3385 solid 1px;
+   margin-left: 37%;
+   width: 25%;
+}
+#button-choices button{
+    border: #ff3385 solid 1px;
 }

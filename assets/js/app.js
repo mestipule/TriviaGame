@@ -1,6 +1,11 @@
+var timerStarted  = false;
 function startTimer(){
-var leftTime = 300000;
-var countDown = setInterval(function() {
+    if (!timerStarted){
+    timerStarted = true;
+    questionaire();
+    $("#button-choices").show();
+    var leftTime = 300000;
+    var countDown = setInterval(function() {
     leftTime = leftTime - 1000;
     var minutes = Math.floor((leftTime %(1000*60*60))/(60*1000));
     var seconds = Math.floor((leftTime % (1000 * 60)) / 1000);
@@ -14,31 +19,82 @@ var countDown = setInterval(function() {
     }
     displayTime += seconds;
     document.getElementById("time").innerHTML = displayTime;
-    console.log(minutes + seconds);
-
     if (leftTime < 0){
 
         clearInterval(countDown);
         document.getElementById("time").innerHTML = "00" + ":" + "00";
     }
-    console.log("time");
-    
 }, 1000);
+    }
 }
 
-$(function(){
+    var questions = [
+    {
+        ask: "What is a single variable that is used to store different element?",
+        answer1: "a. adoptor",
+        answer2: "b. array",
+        answer3: "c. bubblesort",
+        answer4: "d. document",
+        answerKey: "b. array"
+    }, {
+        ask: "A standardized system for tagging text files to achieve font, color, graphic, and hyperlink effects on World Wide Web pages.",
+        answer1: "a. Phyton",
+        answer2: "b. Java",
+        answer3: "c. JavaScript",
+        answer4: "d. HTML",
+        answerKey: "b. HTML"
+    },{
+        ask: "CSS stands for?",
+        answer1: "a. Cascading Style Sheet",
+        answer2: "b. Cascading Sheet Style",
+        answer3: "c. Cascading Sorter Style",
+        answer4: "d. Colliding Style Sheet",
+        answerKey: "b. Cascading Style Sheet"
+    },{
+        ask: "What does expression produces?",
+        answer1: "a. A Declaration",
+        answer2: "b. A Parameter",
+        answer3: "c. A Method",
+        answer4: "d. A Value",
+        answerKey: "b. A Value"
+    },{
+        ask: "A keyword to create variable.",
+        answer1: "a. var",
+        answer2: "b. car",
+        answer3: "c. bar",
+        answer4: "d. val",
+        answerKey: "b. var"
+    },
+ ];
+ var whichQuestionAreOn = -1;
+function buttonMethod(){
+    // what needs to happen:
+    //when they click the button
+    //counter for correct and incorrect answer
+    //then we go to another question
+    //check for answer all the question
+    //display the resualt
+    //if not they complete it the goes to zero, the trivia game finish
+    //if not answered first question we move to the next question
+
+    var correctCount = 0;
+    correctCount += 1;
+
+    var incorrectCount = 0;
+    incorrectCount += 1;
+
+}
+function questionaire(){
     
-    $("question-here").each(function(index){
+    var displayQuestions = questions[0];
+    $("#question-here").text(displayQuestions.ask);
+    $("#one").text(displayQuestions.answer1);
+    $("#two").text(displayQuestions.answer2);
+    $("#three").text(displayQuestions.answer3);
+    $("#four").text(displayQuestions.answer4);
+}
 
-        
-    }
- }
 
-
-
-
-// var correctCount = ;
-// var incorrectCount = ;
 
 
 
