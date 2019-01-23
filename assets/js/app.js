@@ -1,3 +1,7 @@
+var correctCount = 0;
+var incorrectCount = 0;
+var whichQuestionAreOn = 0;
+var totalNumberQuestion = 0;
 var timerStarted  = false;
 function startTimer(){
     if (!timerStarted){
@@ -66,24 +70,46 @@ function startTimer(){
         answerKey: "b. var"
     },
  ];
- var whichQuestionAreOn = -1;
-function buttonMethod(){
+ 
+function buttonMethod(selectedButton){
+
+    console.log($(selectedButton));
     // what needs to happen:
     //when they click the button
     //counter for correct and incorrect answer
+    if (questions[whichQuestionAreOn].answerKey === selectedButton.innerText){
+        correctCount += 1;
+    } else {
+        incorrectCount += 1;
+    }
+    console.log(correctCount);
+    console.log(incorrectCount);
     //then we go to another question
+    
+    nextQuestion();
+    }
+    function nextQuestion(){
+        $("#question-here").hide();
+        $("#button-choices").hide();
+        whichQuestionAreOn += 1;
+        totalNumberQuestion = questions.length;
+        if (whichQuestionAreOn === totalNumberQuestion){
+            var result = sum_values()
+            console.log(result);
+        } else {
+            $("#question-here".get(whichQuestionAreOn)).fadeIn();
+        }   
+}
     //check for answer all the question
     //display the resualt
     //if not they complete it the goes to zero, the trivia game finish
     //if not answered first question we move to the next question
 
-    var correctCount = 0;
-    correctCount += 1;
+    
+    
 
-    var incorrectCount = 0;
-    incorrectCount += 1;
 
-}
+
 function questionaire(){
     
     var displayQuestions = questions[0];
@@ -93,6 +119,7 @@ function questionaire(){
     $("#three").text(displayQuestions.answer3);
     $("#four").text(displayQuestions.answer4);
 }
+
 
 
 
