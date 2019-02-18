@@ -10,6 +10,7 @@ body{
    margin: 20px 215px;
    padding: 25px;
   background-size: 300px 100px;
+  border-radius: 50px;
 }
 .center{
     text-align: center;
@@ -52,4 +53,24 @@ body{
 }
 #button-choices button{
     border: #ff3385 solid 1px;
+}
+#score{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    width: 368px;
+    color:  hotpink;
+    border-radius: 5px;
+    display: none;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+#score-correct{
+    font-size: 30pt;
+    border: solid black 3px;
+    background: opacity 0.5;
+}
+#score-incorrect{
+    font-size: 28pt;
+    border: solid black 3px;
 }

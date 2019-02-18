@@ -2,37 +2,42 @@ var correctCount = 0;
 var incorrectCount = 0;
 var whichQuestionAreOn = 0;
 var totalNumberQuestion = 0;
+
 var timerStarted  = false;
 function startTimer(){
     if (!timerStarted){
-    timerStarted = true;
-    questionaire();
-    $("#button-choices").show();
-    var leftTime = 300000;
-    var countDown = setInterval(function() {
-    leftTime = leftTime - 1000;
-    var minutes = Math.floor((leftTime %(1000*60*60))/(60*1000));
-    var seconds = Math.floor((leftTime % (1000 * 60)) / 1000);
-    var displayTime = "";
-    if (minutes <10){
-        displayTime = "0";
-    }
-    displayTime += minutes + ":";
-    if (seconds <10){
-        displayTime += "0";
-    }
-    displayTime += seconds;
-    document.getElementById("time").innerHTML = displayTime;
-    if (leftTime < 0){
-
-        clearInterval(countDown);
-        document.getElementById("time").innerHTML = "00" + ":" + "00";
-    }
-}, 1000);
+        timerStarted = true;
+        questionaire();
+        $("#button-choices").show();
+        var leftTime = 300000;
+        var countDown = setInterval(function() {
+            leftTime = leftTime - 1000;
+            var minutes = Math.floor((leftTime %(1000*60*60))/(60*1000));
+            var seconds = Math.floor((leftTime % (1000 * 60)) / 1000);
+            var displayTime = "";
+            if (minutes <10){
+                displayTime = "0";
+            }
+            displayTime += minutes + ":";
+            if (seconds <10){
+                displayTime += "0";
+            }
+            displayTime += seconds;
+            document.getElementById("time").innerHTML = displayTime;
+            if (leftTime < 0){
+                clearInterval(countDown);
+                document.getElementById("time").innerHTML = "00" + ":" + "00";
+                $("#question-here").hide();
+                $("#button-choices").hide();
+                $("#score").show();
+                $("#score-correct").text("Correct Answers: " + correctCount);
+                $("#score-incorrect").text("Incorrect Answers: " + incorrectCount);
+            }
+        }, 1000);
     }
 }
 
-    var questions = [
+var questions = [
     {
         ask: "What is a single variable that is used to store different element?",
         answer1: "a. adoptor",
@@ -70,13 +75,16 @@ function startTimer(){
         answerKey: "b. var"
     },
  ];
- 
+
+ var counterE=0;
 function buttonMethod(selectedButton){
 
     console.log($(selectedButton));
     // what needs to happen:
     //when they click the button
     //counter for correct and incorrect answer
+    counterE+=1;
+    console.log(counterE);
     if (questions[whichQuestionAreOn].answerKey === selectedButton.innerText){
         correctCount += 1;
     } else {
@@ -87,32 +95,40 @@ function buttonMethod(selectedButton){
     //then we go to another question
     
     nextQuestion();
-    }
-    function nextQuestion(){
-        $("#question-here").hide();
+}
+function nextQuestion(){
+    $("#question-here").hide();
+    whichQuestionAreOn += 1;
+    totalNumberQuestion = questions.length;
+    if (whichQuestionAreOn >= totalNumberQuestion){
         $("#button-choices").hide();
-        whichQuestionAreOn += 1;
-        totalNumberQuestion = questions.length;
-        if (whichQuestionAreOn === totalNumberQuestion){
-            var result = sum_values()
-            console.log(result);
-        } else {
-            $("#question-here".get(whichQuestionAreOn)).fadeIn();
-        }   
+        $("#score").show();
+        $("#score-correct").text("Correct Answers: " + correctCount);
+        $("#score-incorrect").text("Incorrect Answers: " + incorrectCount);
+
+    } else {
+        $("#question-here").show();
+        questionaire();
+        // $("#question-here".get(whichQuestionAreOn)).fadeIn();
+    }   
 }
     //check for answer all the question
     //display the resualt
     //if not they complete it the goes to zero, the trivia game finish
     //if not answered first question we move to the next question
-
+   //  
+    //function buttonMethod(){
+   
+        // var the_sum = 0;
+        // for (questions in answers){
+        //     the_sum = the_sum + parseInt(answers[questions])
+      //  }
     
-    
-
 
 
 function questionaire(){
     
-    var displayQuestions = questions[0];
+    var displayQuestions = questions[whichQuestionAreOn];
     $("#question-here").text(displayQuestions.ask);
     $("#one").text(displayQuestions.answer1);
     $("#two").text(displayQuestions.answer2);
@@ -130,5 +146,4 @@ function questionaire(){
 //     var numberToBeat = document.getElementById("number-to-beat")
 //     $(numberToBeat).append("Number To Beat: " + targetNumber);
 // };
-
 
