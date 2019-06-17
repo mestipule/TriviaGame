@@ -51,7 +51,7 @@ var questions = [
         answer2: "b. Java",
         answer3: "c. JavaScript",
         answer4: "d. HTML",
-        answerKey: "b. HTML"
+        answerKey: "d. HTML"
     },{
         ask: "CSS stands for?",
         answer1: "a. Cascading Style Sheet",
@@ -65,14 +65,14 @@ var questions = [
         answer2: "b. A Parameter",
         answer3: "c. A Method",
         answer4: "d. A Value",
-        answerKey: "b. A Value"
+        answerKey: "d. A Value"
     },{
         ask: "A keyword to create variable.",
         answer1: "a. var",
         answer2: "b. car",
         answer3: "c. bar",
         answer4: "d. val",
-        answerKey: "b. var"
+        answerKey: "a. var"
     },
  ];
 
